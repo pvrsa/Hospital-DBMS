@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Patient's Home Page</title>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/js/bootstrap.min.js"></script>
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <style media="screen">
+            h3{
+                border-left: 6px solid blue;
+                background-color: #D6C6C6;
+                padding-top: 10px;
+            }
+            h4{
+                border-left: 6px solid red;
+                background-color: #D6C6C6;
+                padding-bottom: 10px;
+                padding-top: 10px;
+
+            }
+        </style>
+
+    </head>
+    <body background="bg.jpg">
+
+        <div class="container">
+                <span class="right">
+                    <a href="MAIN.html">
+                        <strong>Back to the MAIN PAGE</strong>
+                    </a>
+                </span>
+                <div class="clr"></div>
+            </div>
+        </div>
+
+        <br>
+        <br>
+        <br>
+        <br>
+
+            <table class="table table-bordered table-inverse">
+                <thead>
+                    <tr>
+                        <th>
+                            <div class="bg-success text-white text-center">
+                                Your Next appointment
+                            </div>
+
+                        </th>
+                        <th>
+                            <div class="bg-warning text-white text-center">
+                                Past Appointments
+                            </div>
+                        </th>
+
+                    </tr>
+                </thead>
+
+            </table>
+
+
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+
+          <div class="container">
+                  <div class="row text-center">
+                      <div class="col-sm-6">
+                          <div class = "btn-group">
+                             <button type = "button" class = "btn btn-primary dropdown" data-toggle = "dropdown">
+                                Specality
+                                <span class = "caret"></span>
+                           </button>
+                           <ul class = "dropdown-menu" role = "menu">
+                               <?php
+                                   $con= mysqli_connect ("localhost","root","","HospitalDMS");
+                              ?>
+                              <?php
+                                $list=mysqli_query($con,"select d_speciality from Doctor group by d_speciality");
+                                while($row_list=mysqli_fetch_assoc($list)){
+                                ?>
+                              <li class = "divider"></li>
+                              <li><a href = "#">Separated link</a></li>
+                           </ul>
+                          </div>
+                      </div>
+
+                      <div class="col-sm-3">
+                          <div class = "btn-group">
+                             <button type = "button" class = "btn btn-primary" data-toggle = "dropdown">
+                                Selected Date
+                                <span class = "caret"></span>
+                           </button>
+                           <ul class = "dropdown-menu" role = "menu">
+                              <li><a href = "#">Action</a></li>
+                              <li><a href = "#">Another action</a></li>
+                              <li><a href = "#">Something else here</a></li>
+
+                              <li class = "divider"></li>
+                              <li><a href = "#">Separated link</a></li>
+                           </ul>
+                          </div>
+                      </div>
+                      <div class="col-sm-3">
+                          <form action="appointment.php" method="post">
+                              <button type="submit" class="btn btn-success">
+                                  GO
+                              </button>
+                          </form>
+
+                      </div>
+              </div>
+              <br>
+              <br>
+              <p class="p text-center">OR </p>
+              <br>
+              <br>
+
+              <div class="row text-center">
+                  <form action="viewAllDocs.php" method="post">
+                      <button type="submit" class="btn btn-info">
+                          VIEW ALL DOCS
+                      </button>
+                  </form>
+              </div>
+          </div>
+
+
+    </body>
+</html>
